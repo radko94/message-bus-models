@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "lib": [ "es2015", "es2017", "esnext.asynciterable" ],
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "declaration": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "lib": ["es2015"]
+}
