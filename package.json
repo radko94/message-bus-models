@@ -1,5 +1,5 @@
 {
-  "name": "@radko94/message-bus-models",
+  "name": "message-bus-models",
   "version": "1.0.11",
   "description": "",
   "main": "dist/index.js",
@@ -14,7 +14,8 @@
     "url": "git+https://github.com/radko94/message-bus-models.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/radko94"
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   },
   "devDependencies": {
     "@types/node": "^15.12.3",
