@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [ "es2015", "es2017", "esnext.asynciterable" ],
+    "lib": ["es2015", "es2017", "esnext.asynciterable"],
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
@@ -11,10 +11,13 @@
     "noImplicitAny": true,
     "removeComments": true,
     "sourceMap": true,
-    "strictNullChecks": true,
     "alwaysStrict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "paths": {
+      "@interfaces/*": ["interfaces/index.ts"],
+      "@helpers/*": ["helpers/index.ts"]
+    }
   },
   "lib": ["es2015"]
 }
