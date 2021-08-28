@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "build:publish": "rm -r dist && rm -r node_modules && npm i && npm run build && npm publish && git add . && git commit && git push"
   },
   "author": "Radko Apostolov <radkoapostolov94@gmail.com>",
   "license": "ISC",
