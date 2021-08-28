@@ -1,5 +1,7 @@
 node_modules
-index.ts
 helpers
 interfaces
 .github
+
+!dist/*
+!tsconfig.json
