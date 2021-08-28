@@ -1,4 +1,4 @@
 export interface IMessage {
-  event: string;
+  eventName: string;
   data: object;
 }
