@@ -3,7 +3,7 @@ import {
   IConsumedDataStep,
   IMaskStep,
   IPayloadStep,
-} from "@interfaces/*";
+} from "../interfaces";
 
 export class BufferHandler {
   private _bufferedBytes: number;

@@ -4,4 +4,4 @@ export * from "./buffer-info.interface";
 export * from "./mask-step.interface";
 export * from "./payload-step.interface";
 export * from "./message.interface";
-export * from "./socket-response.interface";
+export * from "./connection.interface";
