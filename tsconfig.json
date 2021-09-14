@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "lib": ["es2015", "es2017", "esnext.asynciterable"],
     "module": "ESNext",
     "target": "ESNext",
     "outDir": "dist",
@@ -19,6 +18,5 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true
-  },
-  "lib": ["es2015"]
+  }
 }

@@ -1,9 +1,7 @@
-import {
-  IBufferInfo,
-  IConsumedDataStep,
-  IMaskStep,
-  IPayloadStep,
-} from "../interfaces";
+import { IBufferInfo } from "interfaces/buffer-info.interface";
+import { IConsumedDataStep } from "interfaces/consumed-data.interface";
+import { IMaskStep } from "interfaces/mask-step.interface";
+import { IPayloadStep } from "interfaces/payload-step.interface";
 
 export class BufferHandler {
   private _bufferedBytes: number;

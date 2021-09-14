@@ -1,9 +1,10 @@
 {
   "name": "js-message-bus-models",
-  "version": "1.0.189",
+  "version": "1.0.190",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "build:publish": "rm -r dist && rm -r node_modules && npm i && npm run build && npm publish && git add . && git commit && git push"
