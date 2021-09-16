@@ -49,9 +49,6 @@ export class BufferHandler {
   }
 
   public encode(message: Buffer): Buffer[] {
-    // const merge = options.mask && options.readOnly;
-    // let offset = options.mask ? 6 : 2;
-
     if (!message) return;
 
     let offset = 2;
@@ -65,11 +62,9 @@ export class BufferHandler {
       payloadLength = 126;
     }
 
-    // const target = Buffer.allocUnsafe(merge ? data.length + offset : offset);
     const target = Buffer.allocUnsafe(offset);
 
     target[0] = 1 | 0x80;
-    // if (options.rsv1) target[0] |= 0x40;
 
     target[1] = payloadLength;
 
@@ -81,23 +76,6 @@ export class BufferHandler {
     }
 
     return [target, message];
-    // if (!options.mask) return [target, data];
-
-    // randomFillSync(mask, 0, 4);
-
-    // target[1] |= 0x80;
-    // target[offset - 4] = mask[0];
-    // target[offset - 3] = mask[1];
-    // target[offset - 2] = mask[2];
-    // target[offset - 1] = mask[3];
-
-    // if (merge) {
-    //   applyMask(data, mask, target, offset, data.length);
-    //   return [target];
-    // }
-
-    // applyMask(data, mask, data, 0, data.length);
-    // return [target, data];
   }
 
   private _getInfo(data: Buffer): IBufferInfo {
@@ -105,7 +83,7 @@ export class BufferHandler {
       return;
     }
 
-    const { consumedData, nextBuffer } = this._consume(2, data);
+    const { consumedData, nextBuffer } = this.consume(2, data);
 
     if ((consumedData[0] & 0x30) !== 0x00) this._throwError("RSV2 and RSV3");
 
@@ -154,7 +132,7 @@ export class BufferHandler {
       return;
     }
 
-    const { consumedData, nextBuffer } = this._consume(4, data);
+    const { consumedData, nextBuffer } = this.consume(4, data);
 
     return {
       mask: consumedData,
@@ -177,7 +155,7 @@ export class BufferHandler {
         return;
       }
 
-      const { consumedData } = this._consume(payloadLength, data);
+      const { consumedData } = this.consume(payloadLength, data);
       _data = consumedData;
       if (masked) this._unmaskFn(_data, mask);
     }
@@ -192,7 +170,7 @@ export class BufferHandler {
     return this._dataMessage(fin);
   }
 
-  private _consume(numberOfBytes: number, buffer: Buffer): IConsumedDataStep {
+  public consume(numberOfBytes: number, buffer: Buffer): IConsumedDataStep {
     this._bufferedBytes -= numberOfBytes;
 
     if (numberOfBytes === buffer.length)
@@ -271,7 +249,7 @@ export class BufferHandler {
       return;
     }
 
-    const consumedData = this._consume(2, data);
+    const consumedData = this.consume(2, data);
 
     const payloadLength = consumedData.consumedData.readUInt16BE(0);
     const nextBuffer = consumedData.nextBuffer;
@@ -289,7 +267,7 @@ export class BufferHandler {
       return;
     }
 
-    const consumedBuffer = this._consume(8, data);
+    const consumedBuffer = this.consume(8, data);
     const frame = consumedBuffer.consumedData.readUInt32BE(0);
 
     if (frame > Math.pow(2, 53 - 32) - 1)
